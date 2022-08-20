@@ -1,5 +1,6 @@
-import {config } from 'dotenv'
+import { config } from "dotenv";
+config();
 
-config()
+import { SubscriberService } from "./services/subscriber.service";
 
-console.log('Hello world!')
+new SubscriberService().listen();
