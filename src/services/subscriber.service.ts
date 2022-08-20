@@ -53,7 +53,7 @@ export class SubscriberService {
     console.log("listening for messages", await  this.templateService.getTemplate("test"));
     this.templateService.saveTemplate({
       slug: "test",
-      text: "Hello {{user.name}}, use this OTP to verify your account",
+      text: "hey {{user.name}}, use this OTP to verify your account",
       title: "Hello {{user.name}}",
       html: "Hello {{user.name}}",
       data: {},
