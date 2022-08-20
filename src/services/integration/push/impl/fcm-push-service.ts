@@ -27,6 +27,7 @@ export class FcmPushService extends PushService {
       notification: data.notification,
       android: {
         notification: {
+            // "click_action": "TOP_STORY_ACTIVITY",
           imageUrl: data.image,
         },
       },

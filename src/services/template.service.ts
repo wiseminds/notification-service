@@ -9,10 +9,11 @@ export class TemplateService {
   }
 
   public saveTemplate = async (template: ITemplate) => {
-    await this.db.saveTemplate(template);
+   return await this.db.saveTemplate(template);
   }
 
-  public getTemplate(slug: string): Promise<ITemplate> {
+  public async  getTemplate(slug: string): Promise<ITemplate> {
+   
     return this.db.getTemplate(slug);
   }
 }

@@ -11,6 +11,7 @@ import { TemplateProcessorService } from "./template-processor.service";
 import { TemplateService } from "./template.service";
 import config from "../config";
 import { FcmPushService } from "./integration/push/impl/fcm-push-service";
+import { ITemplate } from "../models/template";
 
 export class QueueService {
   retryLimit: number = 5;
@@ -38,15 +39,26 @@ export class QueueService {
     message.messageId = message.messageId || uid(20);
 
     // this.logger.log(`Sending message ${message}`);
-    const template = (await this.templateService.getTemplate(
-      message.template ?? ""
-    )) || { text: "", title: "", html: "" };
+    let template: ITemplate = {
+      title: message.title,
+      text: message.text,
+      html: message.html,
+      slug: "",
+      data: {},
+    };
+
+    if (message.template != null) {
+      template = (await this.templateService.getTemplate(
+        message.template ?? ""
+      )) || { text: "", title: "", html: "" };
+    }
 
     // this.logger.log(`Sending message -  ${template}`);
     let recipients = message.recipients;
     let failed: IRecipient[] = [];
+    const length = recipients ? recipients.length : 0;
 
-    for (let i = 0; i < recipients.length; i++) {
+    for (let i = 0; i < length; i++) {
       const user = recipients[i];
 
       let data = { ...message.data, user };
@@ -110,6 +122,7 @@ export class QueueService {
             notification: {
               title: subject,
               body: text,
+              image: message.image,
             },
           })
         );

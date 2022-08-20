@@ -32,9 +32,9 @@ export class DatabaseService {
       // .where({ slug: template.slug })
       .insert(template)
       .onConflict("slug")
-      .merge( )
+      .merge()
       .then(console.log)
-      .catch(console.log)
+      .catch(console.log);
     // .upsert(template);
   }
 
