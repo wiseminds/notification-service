@@ -26,7 +26,7 @@ export class SubscriberService {
     channel.consume(
       config.queueIdentifier,
       (msg) => {
-        console.log("Received:", msg);
+        // console.log("Received:", msg);
 
         if (msg !== null) {
           // channel.ack(msg);
