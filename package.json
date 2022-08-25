@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "amqplib": "^0.10.2",
+    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "email-templates": "^10.0.1",
     "firebase-admin": "^11.0.1",
