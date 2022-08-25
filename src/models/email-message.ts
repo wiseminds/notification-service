@@ -1,4 +1,5 @@
 export interface IEmailMessage {
+    from?: string;
     to: string;
     subject: string;
     headers?: Record<string, string>

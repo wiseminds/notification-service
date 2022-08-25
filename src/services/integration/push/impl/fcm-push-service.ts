@@ -52,6 +52,7 @@ export class FcmPushService extends PushService {
   }
 
   async send(data: IPushMessage): Promise<any> {
+    console.log('sending push notification');
     if (data.topic && data.topic.length > 0) {
       return this.client.send({
         topic: data.topic,

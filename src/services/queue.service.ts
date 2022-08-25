@@ -88,7 +88,8 @@ export class QueueService {
           this.configuration.email.send({
             html,
             text,
-            subject,
+            subject, 
+            from: message.from,
             to: user.email || "",
           })
         );
@@ -130,8 +131,9 @@ export class QueueService {
 
       const results = await Promise.allSettled(promise);
       console.log(results);
-      done();
+     
     }
+    done();
   }
 
   private delay(ms: number) {

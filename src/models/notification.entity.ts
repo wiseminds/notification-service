@@ -12,6 +12,7 @@ export interface IMessage {
     channels: IChannel[];
     recipients: IRecipient[];
     data: object;
+    from?: string;
     image?: string;
     analyticsLabel?: string;
     webhook?: string;
