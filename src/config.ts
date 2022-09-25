@@ -1,6 +1,7 @@
 interface Config {
   queueIdentifier: string;
   rabbitHost: string;
+  templateLocation: string;
   mail: {
     apiKey?: string;
     mailDomain?: string;
@@ -20,6 +21,7 @@ interface Config {
 const config: Config = {
   queueIdentifier: process.env.QUEUE_IDENTIFIER || "notification-service",
   rabbitHost: process.env.RABBIT_HOST || "amqp://localhost",
+  templateLocation: process.env.TEMPLATE_LOCATION || "",
   mail: {
     apiKey: process.env.MAIL_API_KEY,
     mailDomain: process.env.MAIL_DOMAIN_URL,
