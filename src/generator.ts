@@ -1,9 +1,9 @@
 import { config } from "dotenv";
-import { exit } from 'process';
+import { exit } from "process";
 config();
 
-import { TemplateService } from './services/template.service';
+import { TemplateService } from "./services/template.service";
 
-new TemplateService().seedAll()
-
-exit(0);
+new TemplateService().seedAll().then((_) => {
+  exit(0);
+});
