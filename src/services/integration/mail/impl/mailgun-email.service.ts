@@ -15,7 +15,8 @@ export class MailgunEmailService extends MailService {
       message: {
         from: sender,
       },
-      send: true,
+      send:  process.env.NODE_ENV != 'development',
+      preview: process.env.NODE_ENV == 'development',
       transport: nodemailer.createTransport(
         mg({
           auth: {

@@ -27,14 +27,16 @@ export class DatabaseService {
       .then(console.log);
   }
 
-  saveTemplate(template: ITemplate) {
-    this.instance(DatabaseService.key)
-      // .where({ slug: template.slug })
-      .insert(template)
-      .onConflict("slug")
-      .merge()
-      .then(console.log)
-      .catch(console.log);
+  saveTemplate(template: ITemplate): Promise<any> {
+    return (
+      this.instance(DatabaseService.key)
+        // .where({ slug: template.slug })
+        .insert(template)
+        .onConflict("slug")
+        .merge()
+        // .then(console.log)
+        .catch(console.log)
+    );
     // .upsert(template);
   }
 

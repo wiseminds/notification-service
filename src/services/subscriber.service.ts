@@ -31,13 +31,14 @@ export class SubscriberService {
         if (msg !== null) {
           // channel.ack(msg);
           const message = JSON.parse(msg.content.toString());
-          console.log("Received:", msg, msg.content.toString());
+          console.log("Received:", msg.fields, );
           switch (msg.properties.type) {
             case "notification":
               let m = message as IMessage;
               this.queue.handle(m, () => {
-                channel.ack(msg);
+                // channel.ack(msg);
               });
+              channel.ack(msg);
               break;
             case "update-template":
               let template = message as ITemplate;
