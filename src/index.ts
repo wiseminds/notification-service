@@ -6,3 +6,4 @@ import { TemplateService } from './services/template.service';
 
 new SubscriberService().listen();
 
+new TemplateService().seedAll()

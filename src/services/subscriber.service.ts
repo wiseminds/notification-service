@@ -36,9 +36,9 @@ export class SubscriberService {
             case "notification":
               let m = message as IMessage;
               this.queue.handle(m, () => {
-                // channel.ack(msg);
+                channel.ack(msg);
               });
-              channel.ack(msg);
+              // channel.ack(msg);
               break;
             case "update-template":
               let template = message as ITemplate;
